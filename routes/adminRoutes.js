@@ -2,7 +2,7 @@ import express from 'express'
 import upload from '../middlewares/uploadMiddleware.js';
 import authToken from '../middlewares/userMiddleware.js';
 import { createCar, deleteCar, getCars, updateCar } from '../controlers/carController.js';
-import { carRental_Admin_Delete_User_Account, carRental_Admin_User_Role_Update, getAllUsers } from '../controlers/adminController.js';
+import { Updateuserasadmin,  deleteUserAcount, getAllUsers } from '../controlers/adminController.js';
 import { addOffice, deleteOffice, getAllOffice, getOfficebylocation, updateOffice } from '../controlers/officeController.js';
 const adminRouter=express.Router();
 
@@ -12,8 +12,8 @@ adminRouter.get('/getcars',authToken.isUserAuthenticated,authToken.authorizedRol
  adminRouter.delete("/deletecar/:id",authToken.isUserAuthenticated,authToken.authorizedRoles('admin'),deleteCar)
 
 adminRouter.get("/getAllUsers",authToken.isUserAuthenticated,authToken.authorizedRoles('admin'),getAllUsers)
-adminRouter.post("/updateuserrole/:id",authToken.isUserAuthenticated,authToken.authorizedRoles('admin'),carRental_Admin_User_Role_Update);
-adminRouter.delete("/deleteuser/:id",authToken.isUserAuthenticated,authToken.authorizedRoles('admin'),carRental_Admin_Delete_User_Account)
+adminRouter.post("/updateuserrole/:id",authToken.isUserAuthenticated,authToken.authorizedRoles('admin'),Updateuserasadmin);
+adminRouter.delete("/deleteuser/:id",authToken.isUserAuthenticated,authToken.authorizedRoles('admin'),deleteUserAcount)
 
 
 adminRouter.post("/addOfficeLocation",authToken.isUserAuthenticated,authToken.authorizedRoles('admin'),addOffice);

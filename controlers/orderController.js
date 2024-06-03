@@ -40,7 +40,7 @@ export const OrderCreation = async(req, res) =>{
         order,
     });
 }
-export const carRental_User_Single_Order =  async(req, res, next) =>{
+export const getuserSingleOrder =  async(req, res, next) =>{
     const order = await Order.findById(req.params.id).populate("user", "firstName lastName email").populate("car").populate("officeLocation");
     if (!order) {
         return next(new ErrorHandler("Order Not Found", 404));
@@ -52,7 +52,7 @@ export const carRental_User_Single_Order =  async(req, res, next) =>{
         order,
     });
 }
-export const carRental_User_All_Orders =  async(req, res, next) =>{
+export const getuserAllOrders =  async(req, res, next) =>{
     console.log(req.user._id)
     const orders = await Order.find({ user: req.user._id  }).populate("user", "firstName lastName email").populate("car").populate("officeLocation").sort({createdAt: -1});
 

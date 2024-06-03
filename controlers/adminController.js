@@ -6,7 +6,7 @@ export const getAllUsers = async (req, res) => {
     res.send(users);
   };
   //update user roll as admin
-  export const carRental_Admin_User_Role_Update = async(req, res)=>{
+  export const Updateuserasadmin = async(req, res)=>{
     const {role}=req.body;
     const id=req.params.id;
     console.log(id)
@@ -25,7 +25,7 @@ const updateduser = await UserModel.findOneAndUpdate(
   return res.send(updateduser);
 }
 //delete a user
-export const carRental_Admin_Delete_User_Account = async(req, res)=>{
+export const deleteUserAcount = async(req, res)=>{
     const user = await UserModel.findById(req.params.id);
 
     if(!user) {

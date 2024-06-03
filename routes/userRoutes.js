@@ -3,7 +3,7 @@ import express from 'express'
 import { Signin, Signup, User_Logout, updateUser } from '../controlers/userController.js';
 import authToken from '../middlewares/userMiddleware.js';
 import upload from '../middlewares/uploadMiddleware.js';
-import { OrderCreation, carRental_User_All_Orders, carRental_User_Single_Order } from '../controlers/orderController.js';
+import { OrderCreation, getuserAllOrders, getuserSingleOrder } from '../controlers/orderController.js';
 
 const userRouter=express.Router();
 userRouter.post("/signup",Signup)
@@ -11,6 +11,6 @@ userRouter.post("/signin",Signin)
 userRouter.get("/logout",authToken.isUserAuthenticated,User_Logout)
 userRouter.patch("/updateuser/:id",authToken.isUserAuthenticated,upload.single("profilePicture"),updateUser)
 userRouter.post("/createorder",authToken.isUserAuthenticated,OrderCreation)
-userRouter.get("/getorderbyid/:id",authToken.isUserAuthenticated,carRental_User_Single_Order)
-userRouter.get("/getorder",authToken.isUserAuthenticated,carRental_User_All_Orders)
+userRouter.get("/getorderbyid/:id",authToken.isUserAuthenticated,getuserSingleOrder)
+userRouter.get("/getorder",authToken.isUserAuthenticated,getuserAllOrders)
 export default userRouter
