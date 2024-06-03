@@ -1,5 +1,6 @@
 import Car from "../models/carModel.js";
 import { cloudinaryInstance } from "../config/cloudinary.js";
+import OfficeLocation from "../models/officelocationModel.js";
 export const createCar = async (req, res) => {
     try {
       console.log("hitted");
@@ -20,12 +21,17 @@ export const createCar = async (req, res) => {
         console.log(imageUrl)
         console.log(body, "body");
   
-        const {carName, carModel, carCompany, carPicture, carCategory,carEngine,carMileage, carSeatCapacity, carFuelType,rentalPriceCharge } = body;
+        const {carName, carModel, carCompany, carPicture, carCategory,carEngine,carMileage, carSeatCapacity, carFuelType,rentalPriceCharge,officeemail } = body;
           
-                 
+        const findlocation = await OfficeLocation.findOne({ email: officeemail });
+
+        if (!findlocation) {
+          return res.send("please add instructor first");
+        }
+  
         const createCar = new Car({
             carName, carModel, carCompany, carPicture:imageUrl, carCategory,
-            carEngine,carMileage, carSeatCapacity, carFuelType,rentalPriceCharge
+            carEngine,carMileage, carSeatCapacity, carFuelType,rentalPriceCharge,office: findlocation._id
         });
         
         

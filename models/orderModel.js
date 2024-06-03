@@ -14,24 +14,10 @@ const orderSchema = new mongoose.Schema(
         },
         user: {
             type: mongoose.Schema.Types.ObjectId,
-            ref: "User",
+            ref: "UserModel",
             required: true
         },
-        paymentInfo: {
-            id: {
-                type: String,
-                required: true
-            },
-            status: {
-                type: String,
-                required: true
-            },
-        },
-       
-        paidAt: {
-            type: Date,
-            required: true
-        },
+     
         totalPrice: {
             type: Number,
             required: true,

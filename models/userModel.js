@@ -57,9 +57,15 @@ role: {
     type: String,
     default: 'customer',
 },
+order: [
+    {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Order',
+    },
+],
  
 } ,
  { timestamps: true }
   );
-  const UserModel = mongoose.model('Usermodel', userSchema);
+  const UserModel = mongoose.model('UserModel', userSchema);
   export default UserModel;

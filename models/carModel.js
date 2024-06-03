@@ -30,7 +30,8 @@ const carSchema = new mongoose.Schema(
         carMileage: {
             type: String,
             required: true,
-        },                                 carSeatCapacity: {
+        },     
+        carSeatCapacity: {
             type: Number,
             required: true,
         },
@@ -43,23 +44,18 @@ const carSchema = new mongoose.Schema(
             type: Number,
             required: true,
         },
-        // order: [
-        //     {
-        //         type: mongoose.Schema.Types.ObjectId,
-        //         ref: 'Order',
-        //     },
-        // ],
-        // payment: [
-        //     {
-        //         type: mongoose.Schema.Types.ObjectId,
-        //         ref: 'Payment',
-        //     },
-        // ],
-        // user: {
-        //     type: mongoose.Schema.Types.ObjectId,
-        //     ref: "User",
-        //     required: true
-        // },
+        order: [
+            {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: 'Order',
+            },
+        ],
+     office:[
+        {
+            type:mongoose.Schema.Types.ObjectId,
+            ref: 'OfficeLocation'
+               }
+     ]
     },
     {
         timeStamps: true,        
