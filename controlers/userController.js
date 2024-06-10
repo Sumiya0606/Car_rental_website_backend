@@ -51,7 +51,12 @@ try{
   return res.send("Password incorrect")
   const token=generateToken(email)
   res.cookie("token",token)
-  res.send("logged in")
+  return res.json({ 
+    message: "Logged in successfully", 
+    token, 
+    firstName: userExist.firstName 
+  })
+ 
   
 
 
