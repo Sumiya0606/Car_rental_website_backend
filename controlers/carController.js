@@ -51,6 +51,24 @@ export const createCar = async (req, res) => {
     const cars = await Car.find();
     res.send(cars);
   };
+  //getcar by office location
+  export const getcarbylocation=async  (req,res)=>{
+    const officelocation = req.params.city
+    try {
+      const offices = await OfficeLocation.find({ city: officelocation });
+      
+      const officeIds = offices.map(office => office._id);
+      console.log(officeIds)
+  
+      const cars = await Car.find({ office: { $in: officeIds } }).populate('office');
+  
+      res.status(200).json(cars);
+    } catch (error) {
+      res.status(500).json({ message: 'Error fetching cars', error });
+    }
+  };
+  
+    
   //update 
   
 export const updateCar = async (req, res) => {
