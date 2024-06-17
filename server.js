@@ -8,6 +8,7 @@ import adminRouter from './routes/adminRoutes.js'
 
 const corsOptions = {
   origin: [ 'https://master--quiet-granita-d62216.netlify.app'],
+  credentials: true,
   optionsSuccessStatus: 200
 };
 
