@@ -12,7 +12,7 @@ const corsOptions = {
 };
 
 
-app = express()
+const app = express()
 const port = 3000
 app.use(cors(corsOptions));
 app.get('/', (req, res) => {
