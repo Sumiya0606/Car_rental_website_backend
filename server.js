@@ -9,7 +9,7 @@ import adminRouter from './routes/adminRoutes.js'
 const app = express()
 const port = 3000
 app.use(cors({
-  origin: 'http://localhost:5174', // Allow only your frontend origin
+  origin: 'http://localhost:5176', // Allow only your frontend origin
   credentials: true, // Allow credentials if needed
 }));
 app.get('/', (req, res) => {

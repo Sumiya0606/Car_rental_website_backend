@@ -6,6 +6,7 @@ dotenv.config();
 const authToken = {
 
 
+    
   isUserAuthenticated: async function(req, res, next){
       const {token} = req.cookies;
       // 1) Checking if cookie

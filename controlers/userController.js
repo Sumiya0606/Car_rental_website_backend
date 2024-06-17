@@ -12,7 +12,7 @@ console.log(req.body)
     const userExist=await UserModel.findOne({email})
     if(userExist)
     {
-       return  alert("User already exist")
+       return  res.send("user already exist")
     }
     const saltrounds=10;
     const hashPassword=await bcrypt.hash(password,saltrounds);
@@ -28,8 +28,12 @@ console.log(req.body)
     }
     console.log(newUserCreated)
     const token=generateToken(email)
-    res.cookie("token", token)
-    res.send("Signed successfully!"); 
+    res.cookie("token",token)
+  return res.json({ 
+    message: "signed in successfully", 
+    token, 
+    firstName: newUserCreated.firstName 
+  })
 }
 catch (error) {
     console.log(error, "Something wrong");
@@ -54,7 +58,8 @@ try{
   return res.json({ 
     message: "Logged in successfully", 
     token, 
-    firstName: userExist.firstName 
+    firstName: userExist.firstName ,
+    role:userExist.role
   })
  
   

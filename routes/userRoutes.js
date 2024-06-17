@@ -19,4 +19,7 @@ userRouter.patch("/updateuser/:id",authToken.isUserAuthenticated,upload.single("
 userRouter.post("/createorder",authToken.isUserAuthenticated,OrderCreation)
 userRouter.get("/getorderbyid/:id",authToken.isUserAuthenticated,getuserSingleOrder)
 userRouter.get("/getorder",authToken.isUserAuthenticated,getuserAllOrders)
+userRouter.get('/check-auth', authToken.isUserAuthenticated, (req, res) => {
+    res.status(200).json({ isAuthenticated: true, user: req.user });
+  });
 export default userRouter

@@ -6,11 +6,12 @@ import { Updateuserasadmin,  deleteUserAcount, getAllUsers } from '../controlers
 import { addOffice, deleteOffice, getAllOffice, getOfficebylocation, updateOffice } from '../controlers/officeController.js';
 const adminRouter=express.Router();
 
-adminRouter.post("/add-cars", authToken.isUserAuthenticated,authToken.authorizedRoles('admin'),upload.single("carPicture"), createCar);
+adminRouter.post("/add-cars",  createCar);
 adminRouter.patch("/updatecar/:id",authToken.isUserAuthenticated,authToken.authorizedRoles('admin'),upload.single("carPicture"),updateCar)
 adminRouter.delete("/deletecar/:id",authToken.isUserAuthenticated,authToken.authorizedRoles('admin'),deleteCar)
+adminRouter.get('/getcars',authToken.isUserAuthenticated,authToken.authorizedRoles('admin'),getCars)
 
-adminRouter.get("/getAllUsers",authToken.isUserAuthenticated,authToken.authorizedRoles('admin'),getAllUsers)
+adminRouter.get("/getAllUsers",getAllUsers)
 adminRouter.post("/updateuserrole/:id",authToken.isUserAuthenticated,authToken.authorizedRoles('admin'),Updateuserasadmin);
 adminRouter.delete("/deleteuser/:id",authToken.isUserAuthenticated,authToken.authorizedRoles('admin'),deleteUserAcount)
 
