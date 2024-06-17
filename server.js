@@ -11,9 +11,10 @@ const corsOptions = {
   optionsSuccessStatus: 200
 };
 
-app.use(cors(corsOptions));app = express()
-const port = 3000
 
+app = express()
+const port = 3000
+app.use(cors(corsOptions));
 app.get('/', (req, res) => {
   res.send('Hello World!')
 })
