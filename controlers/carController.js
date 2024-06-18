@@ -53,7 +53,7 @@ export const createCar = async (req, res) => {
   };
   //getcar by office location
   export const getcarbylocation=async  (req,res)=>{
-    const officelocation = req.params.city
+    const officelocation = req.query
     try {
       const offices = await OfficeLocation.find({ city: officelocation });
       
