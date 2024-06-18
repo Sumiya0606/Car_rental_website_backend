@@ -7,7 +7,7 @@ import adminRouter from './routes/adminRoutes.js'
 
 
 const corsOptions = {
-  origin: [ 'https://master--quiet-granita-d62216.netlify.app'],
+  origin: [ 'https://master--quiet-granita-d62216.netlify.app',   'https://car-rental-website-frontend-roan.vercel.app'],
   credentials: true,
   optionsSuccessStatus: 200
 };
@@ -15,11 +15,13 @@ const corsOptions = {
 
 const app = express()
 const port = 3000
+app.use(express.json());
 app.use(cors(corsOptions));
+app.options('*', cors(corsOptions)); 
 app.get('/', (req, res) => {
   res.send('Hello World!')
 })
-app.use(express.json());
+
 app.use(cookieParser())
 app.use("/api/v1/user",userRouter)
 app.use("/api/v1/admin",adminRouter)
