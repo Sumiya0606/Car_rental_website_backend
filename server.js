@@ -7,7 +7,7 @@ import adminRouter from './routes/adminRoutes.js'
 
 
 const corsOptions = {
-  origin:  'http://localhost:5173',
+  origin:  'https://car-rental-website-backend.onrender.com',
   credentials: true
 };
 
