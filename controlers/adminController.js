@@ -10,6 +10,7 @@ export const getAllUsers = async (req, res) => {
     const {role}=req.body;
     const id=req.params.id;
     console.log(id)
+    console.log(role)
 
 const updateduser = await UserModel.findOneAndUpdate(
     { _id: id },
@@ -22,7 +23,11 @@ const updateduser = await UserModel.findOneAndUpdate(
     return res.send("USer is not updated");
   }
   console.log(updateduser);
-  return res.send(updateduser);
+
+  res.status(200).json({
+    success: true,
+    updateduser,
+});
 }
 //delete a user
 export const deleteUserAcount = async(req, res)=>{

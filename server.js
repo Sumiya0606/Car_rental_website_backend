@@ -7,9 +7,8 @@ import adminRouter from './routes/adminRoutes.js'
 
 
 const corsOptions = {
-  origin: [ 'https://master--quiet-granita-d62216.netlify.app',   'https://car-rental-website-frontend-roan.vercel.app'],
-  credentials: true,
-  optionsSuccessStatus: 200
+  origin:  'http://localhost:5173',
+  credentials: true
 };
 
 

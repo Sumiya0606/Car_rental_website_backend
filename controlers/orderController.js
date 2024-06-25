@@ -8,14 +8,14 @@ export const OrderCreation = async(req, res) =>{
 
    
 
-    const orderExist = await Order.findOne({ car: carId, officeLocation: officeLocationId });
+    // const orderExist = await Order.findOne({ car: carId, officeLocation: officeLocationId });
     const car = await Car.findById(carId)
     const usr = await UserModel.findById(userId)
     const office = await OfficeLocation.findById(officeLocationId)
 
-    if (orderExist && orderExist.orderStatus==='Processing') {
-        return ("Order Already Placed", 400);
-    }
+    // if (orderExist && orderExist.orderStatus==='Processing') {
+    //     return ("Order Already Placed", 400);
+    // }
 
     const order = await Order.create({
         officeLocation: office._id,
@@ -53,8 +53,8 @@ export const getuserSingleOrder =  async(req, res, next) =>{
     });
 }
 export const getuserAllOrders =  async(req, res, next) =>{
-    console.log(req.user._id)
-    const orders = await Order.find({ user: req.user._id  }).populate("user", "firstName lastName email").populate("car").populate("officeLocation").sort({createdAt: -1});
+    console.log(req.params.id)
+    const orders = await Order.find({ user: req.params.id  }).populate("user", "firstName lastName email").populate("car").populate("officeLocation").sort({createdAt: -1});
 
     if (!orders) {
         return next(new ErrorHandler("Order Not Found", 404));

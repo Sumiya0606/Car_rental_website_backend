@@ -25,7 +25,7 @@ export const addOffice = async (req, res) => {
       
     } catch (error) {
       console.log("something went wrong", error);
-      res.send("failed to create course");
+      res.send("failed to create office");
     }
 }
 
@@ -34,6 +34,18 @@ export const addOffice = async (req, res) => {
     const office = await OfficeLocation.find();
     res.send(office);
   };
+  //get an office by id
+  export const getofficebyid = async(req, res, next)=>{
+
+    const officeID = req.params.id
+    const office = await OfficeLocation.find({_id:officeID});
+
+    if(!office){
+        return next(new ErrorHandler(`Office doesn't exist`, 400))
+    }
+return res.send(office);
+   
+}
   //get an by location
   export const getOfficebylocation =async(req, res)=>{
 

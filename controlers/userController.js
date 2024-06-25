@@ -32,7 +32,8 @@ console.log(req.body)
   return res.json({ 
     message: "signed in successfully", 
     token, 
-    firstName: newUserCreated.firstName 
+    firstName: newUserCreated.firstName,
+    id:newUserCreated._id 
   })
 }
 catch (error) {
@@ -58,6 +59,7 @@ try{
   return res.json({ 
     message: "Logged in successfully", 
     token, 
+    id:userExist._id,
     firstName: userExist.firstName ,
     role:userExist.role
   })

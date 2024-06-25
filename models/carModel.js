@@ -27,6 +27,10 @@ const carSchema = new mongoose.Schema(
             type: String,
             required: true,
         },
+        transmission:{
+            type:String,
+            // required:true,
+        },
         carMileage: {
             type: String,
             required: true,
@@ -53,7 +57,7 @@ const carSchema = new mongoose.Schema(
      office:[
         {
             type:mongoose.Schema.Types.ObjectId,
-            ref: 'OfficeLocation'
+            ref: 'OfficeLocation',required:true,
                }
      ]
     },
