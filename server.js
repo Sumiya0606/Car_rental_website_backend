@@ -6,17 +6,27 @@ import cookieParser from 'cookie-parser'
 import adminRouter from './routes/adminRoutes.js'
 
 
-const corsOptions = {
-  origin:  'https://car-rental-website-backend.onrender.com',
-  credentials: true
-};
+
 
 
 const app = express()
 const port = 3000
+const allowedOrigins = [
+  'https://car-rental-website-frontend-roan.vercel.app',
+  'https://car-rental-website-backend.onrender.com',
+];
 app.use(express.json());
-app.use(cors(corsOptions));
-app.options('*', cors(corsOptions)); 
+
+app.use(cors({
+  origin: (origin, callback) => {
+    if (allowedOrigins.includes(origin) || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true,
+})); 
 app.get('/', (req, res) => {
   res.send('Hello World!')
 })
