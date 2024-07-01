@@ -35,7 +35,7 @@ app.get('/', (req, res) => {
 app.use(cookieParser())
 app.use("/api/v1/user",userRouter)
 app.use("/api/v1/admin",adminRouter)
-
+app.use("/api/v1/user",paymentRouter)
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })
