@@ -6,7 +6,7 @@ import OfficeLocation from "../models/OfficeLocation.js";
 import UserModel from "../models/userModel";
 
 // Controller to create Razorpay order and handle payment
-exports.createRazorpayOrder = async (req, res) => {
+export const createRazorpayOrder = async (req, res) => {
     try {
         const { officeLocationId, carId, userId, totalPrice, pickedat, returnedat } = req.body;
 
@@ -60,7 +60,7 @@ exports.createRazorpayOrder = async (req, res) => {
 };
 
 // Controller to verify Razorpay payment
-exports.verifyRazorpayPayment = async (req, res) => {
+export const verifyRazorpayPayment = async (req, res) => {
     try {
         const { razorpay_order_id, razorpay_payment_id, razorpay_signature } = req.body;
 
