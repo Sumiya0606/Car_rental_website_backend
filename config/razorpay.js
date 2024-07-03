@@ -5,4 +5,4 @@ const razorpayInstance = new Razorpay({
     key_secret: process.env.KEY_SECRET,
 });
 
-module.exports = razorpayInstance;
+export default razorpayInstance;
