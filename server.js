@@ -5,11 +5,6 @@ import userRouter from './routes/userRoutes.js'
 import cookieParser from 'cookie-parser'
 import adminRouter from './routes/adminRoutes.js'
 import paymentRouter from './routes/paymentRotes.js'
-
-
-
-
-
 const app = express()
 const port = 3000
 const allowedOrigins = [
