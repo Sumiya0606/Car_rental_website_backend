@@ -72,13 +72,13 @@ export const verifyRazorpayPayment = async (req, res) => {
     try {
         const { razorpay_order_id, razorpay_payment_id, razorpay_signature } = req.body;
 
-        console.log('RAZORPAY_KEY_SECRET:', process.env.RAZORPAY_KEY_SECRET);  // Debugging line
+        console.log('RAZORPAY_KEY_SECRET:', process.env.KEY_SECRET);  // Debugging line
 
-        if (!process.env.RAZORPAY_KEY_SECRET) {
+        if (!process.env.KEY_SECRET) {
             return res.status(500).json({ message: 'Razorpay secret key not found' });
         }
 
-        const hmac = crypto.createHmac('sha256', process.env.RAZORPAY_KEY_SECRET);
+        const hmac = crypto.createHmac('sha256', process.env.KEY_SECRET);
 
         hmac.update(`${razorpay_order_id}|${razorpay_payment_id}`);
         const generated_signature = hmac.digest("hex");
