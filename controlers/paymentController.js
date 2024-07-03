@@ -1,4 +1,4 @@
-import razorpayInstance from "../config/razorpay";
+import razorpayInstance from "../config/razorpay.js";
 import Order from "../models/Order";
 import Car from "../models/Car";
 
