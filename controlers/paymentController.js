@@ -1,6 +1,6 @@
 import razorpayInstance from "../config/razorpay.js";
-import Order from "../models/Order";
-import Car from "../models/Car";
+import Order from "../models/orderModel.js";
+import Car from "../models/carModel.js";
 
 import OfficeLocation from "../models/OfficeLocation.js";
 import UserModel from "../models/userModel";
