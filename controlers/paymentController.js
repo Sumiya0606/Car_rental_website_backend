@@ -2,8 +2,8 @@ import razorpayInstance from "../config/razorpay.js";
 import Order from "../models/orderModel.js";
 import Car from "../models/carModel.js";
 
-import OfficeLocation from "../models/OfficeLocation.js";
-import UserModel from "../models/userModel";
+import OfficeLocation from "../models/officelocationModel.js";
+import UserModel from "../models/userModel.js";
 
 // Controller to create Razorpay order and handle payment
 export const createRazorpayOrder = async (req, res) => {
