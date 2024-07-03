@@ -21,7 +21,8 @@ export const createRazorpayOrder = async (req, res) => {
         const car = await Car.findById(carId);
         const usr = await UserModel.findById(userId);
         const office = await OfficeLocation.findById(officeLocationId);
-
+console.log(req.body)
+console.log("hit")
         if (!car || !usr || !office) {
             return res.status(400).json({ success: false, message: "Invalid data provided" });
         }
