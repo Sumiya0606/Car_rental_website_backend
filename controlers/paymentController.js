@@ -16,23 +16,26 @@ const razorpayInstance = new Razorpay({
 // Controller to create Razorpay order and handle payment
 export const createRazorpayOrder = async (req, res) => {
     try {
-        const { officeLocationId, carId, userId, totalPrice, pickedat, returnedat } = req.body;
+        const { officeLocationId, carId, userId, totalAmount, pickedat, returnedat } = req.body;
 
+        console.log('Received data:', req.body); // Log received data
+console.log(totalAmount)
         const car = await Car.findById(carId);
         const usr = await UserModel.findById(userId);
         const office = await OfficeLocation.findById(officeLocationId);
-console.log(req.body)
-console.log("hit")
+
         if (!car || !usr || !office) {
             return res.status(400).json({ success: false, message: "Invalid data provided" });
         }
 
         // Create Razorpay order
         const options = {
-            amount: totalPrice * 100, // amount in smallest currency unit
+            amount: totalAmount * 100, // amount in smallest currency unit
             currency: "INR",
             receipt: `receipt_order_${Date.now()}`,
         };
+
+        console.log('Razorpay order options:', options); // Log Razorpay options
 
         const razorpayOrder = await razorpayInstance.orders.create(options);
 
@@ -44,7 +47,7 @@ console.log("hit")
         const order = await Order.create({
             officeLocation: office._id,
             car: car._id,
-            totalPrice: totalPrice,
+            totalPrice: totalAmount,
             pickedAt: pickedat,
             returnedAt: returnedat,
             user: usr._id,
@@ -62,14 +65,15 @@ console.log("hit")
             order,
             razorpayOrder,
         });
+        
     } catch (error) {
         console.error(error);
         res.status(500).json({ success: false, message: "Internal Server Error" });
     }
 };
 
-// Controller to verify Razorpay payment
 export const verifyRazorpayPayment = async (req, res) => {
+    console.log("hitedvarify")
     try {
         const { razorpay_order_id, razorpay_payment_id, razorpay_signature } = req.body;
 

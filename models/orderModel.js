@@ -22,6 +22,8 @@ const orderSchema = new mongoose.Schema(
             type: Number,
             required: true,
             default: 0
+        },razorpayOrderId:{
+type:String,
         },
         orderStatus: {
             type: String,

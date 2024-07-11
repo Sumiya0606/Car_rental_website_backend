@@ -79,6 +79,7 @@ catch(error){
 export const User_Logout =async (req, res, next) => {
 
   // Removing the cookie 
+  console.log("hit")
   res.cookie('token', null, {
       expires: new Date(Date.now()),
       httpOnly: true,

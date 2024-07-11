@@ -9,7 +9,6 @@ const app = express()
 const port = 3000
 const allowedOrigins = [
   'https://car-rental-website-frontend-roan.vercel.app',
-
 ];
 app.use(express.json());
 
