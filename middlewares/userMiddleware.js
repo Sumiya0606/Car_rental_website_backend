@@ -2,11 +2,7 @@ import dotenv from "dotenv";
 import jwt from 'jsonwebtoken'
 import UserModel from "../models/userModel.js";
 dotenv.config();
-
-const authToken = {
-
-
-    
+const authToken = {  
   isUserAuthenticated: async function(req, res, next){
       const {token} = req.cookies;
       // 1) Checking if cookie
@@ -24,7 +20,6 @@ const authToken = {
       // 5) Calling next
       next();
   },
-
   authorizedRoles: function(...roles){
       return (req, res, next) => {
         console.log("hit")
